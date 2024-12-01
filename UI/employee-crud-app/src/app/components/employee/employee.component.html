@@ -1,0 +1,67 @@
+<div class="container">
+    <h1>Employee Management</h1>
+  
+    <div>
+      <h3>Add/Edit Employee</h3>
+      <form>
+        <div>
+          <label for="name">Name:</label>
+          <input
+            id="name"
+            type="text"
+            [(ngModel)]="selectedEmployee.name"
+            name="name"
+            placeholder="Employee Name"
+          />
+        </div>
+  
+        <div>
+          <label for="position">Position:</label>
+          <input
+            id="position"
+            type="text"
+            [(ngModel)]="selectedEmployee.position"
+            name="position"
+            placeholder="Employee Position"
+          />
+        </div>
+  
+        <div>
+          <label for="salary">Salary:</label>
+          <input
+            id="salary"
+            type="number"
+            [(ngModel)]="selectedEmployee.salary"
+            name="salary"
+            placeholder="Employee Salary"
+          />
+        </div>
+  
+        <div>
+          <label for="dateOfJoining">Date of Joining:</label>
+          <input
+            id="dateOfJoining"
+            type="date"
+            [(ngModel)]="selectedEmployee.dateOfJoining"
+            name="dateOfJoining"
+          />
+        </div>
+  
+        <button type="button" (click)="selectedEmployee.id ? updateEmployee() : addEmployee()">
+          {{ selectedEmployee.id ? 'Update' : 'Add' }} Employee
+        </button>
+      </form>
+    </div>
+  
+    <div>
+      <h3>Employee List</h3>
+      <ul>
+        <li *ngFor="let employee of employees">
+          <span>{{ employee.name }} ({{ employee.position }})</span>
+          <button (click)="editEmployee(employee)">Edit</button>
+          <button (click)="deleteEmployee(employee.id)">Delete</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
